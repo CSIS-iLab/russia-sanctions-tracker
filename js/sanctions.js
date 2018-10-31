@@ -153,6 +153,7 @@ $(document).ready(function() {
               }
             ],
             initComplete: function initComplete() {
+              $(".loader").hide();
               table = this.api();
 
               page = table.page.info().page + 1;
@@ -452,7 +453,7 @@ $(document).ready(function() {
               .find("span")
               .text("Hide");
 
-            $(input).blur();
+            // $(input).blur();
             $("table").removeClass("hide");
             $(".dataTables_info").removeClass("hide");
             rerender();
@@ -488,17 +489,17 @@ $(document).ready(function() {
 
       function format(keys, d) {
         return (
-          '\n          <div class="details">\n            <div class="action-taken">\n              <div class="heading">ACTION TAKEN</div>\n              <div>' +
+          '\n          <div class="details">\n            <div class="action-taken">\n              <h3 class="heading">ACTION TAKEN</h3>\n              <div>' +
           d["gsx$actiontaken"] +
-          '</div>\n            </div>\n\n            <div class="specific-targets">\n              <div class="heading">SPECIFIC TARGETS</div>\n              <div>' +
+          '</div>\n            </div>\n\n            <div class="specific-targets">\n              <h3 class="heading">SPECIFIC TARGETS</h3>\n              <div>' +
           d["gsx$specifictargets"] +
-          '</div>\n            </div>\n\n            <div class="stated-intent">\n              <div class="heading">STATED INTENT</div>\n              <div style="padding-left:24px">' +
+          '</div>\n            </div>\n\n            <div class="stated-intent">\n              <h3 class="heading">STATED INTENT</h3>\n              <div style="padding-left:24px">' +
           d["gsx$statedintent"] +
-          '</div>\n            </div>\n\n            <div class="activities">\n              <div class="heading">Activities Linked to</div>\n              <div>' +
+          '</div>\n            </div>\n\n            <div class="activities">\n              <h3 class="heading">Activities Linked to</h3>\n              <div>' +
           d["gsx$activitieslinkedto"] +
-          '</div>\n            </div>\n\n            <div class="ht-lift">\n              <div class="heading">HOW TO LIFT</div>\n              <div style="padding-left:24px">' +
+          '</div>\n            </div>\n\n            <div class="ht-lift">\n              <h3 class="heading">HOW TO LIFT</h3>\n              <div style="padding-left:24px">' +
           keys["gsx$howtoliftmechanically"][d["gsx$howtoliftmechanically"]] +
-          '</div>\n            </div>\n\n            <div class="resources">\n              <div class="heading">RESOURCES</div>\n              <div><ul><li>' +
+          '</div>\n            </div>\n\n            <div class="resources">\n              <h3 class="heading">RESOURCES</h3>\n              <div><ul><li>' +
           d["gsx$resources"]
             .split(/,|;/)
             .map(function(l) {
