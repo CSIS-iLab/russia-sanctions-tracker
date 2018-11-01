@@ -253,10 +253,12 @@ $(document).ready(function() {
                 "label input[type='search']"
               );
 
-              $(searchField).after('<button class="reset">reset</button>');
+              $(searchField).after(
+                '<button class="reset" aria-label="Reset Form">reset</button>'
+              );
 
               $(".dataTables_filter > label").after(
-                '<button class="view-all down"><span>View all</span> sanctions</button>'
+                '<button class="view-all down" aria-label="Show or hide all Sanctions"><span>View all</span> sanctions</button>'
               );
 
               // searchField.placeholder = "search";
@@ -421,15 +423,19 @@ $(document).ready(function() {
             .replace(/\s/g, "_");
 
           var datalist = $(
-            '<datalist data-list-filter="^" id="' + labelSlug + '"></datalist>'
+            '<datalist data-list-filter="^" id="datalist_' +
+              labelSlug +
+              '"></datalist>'
           ).prependTo(".dataTables_filter");
 
           var input =
-            '<input  data-list-focus="true" type="search" class="filter ' +
+            '<input id="' +
             labelSlug +
-            '" list="' +
+            '" data-list-focus="true" type="search" class="filter ' +
             labelSlug +
-            '" >';
+            '" list="datalist_' +
+            labelSlug +
+            '">';
 
           datalist
             .wrap("<div></div>")
@@ -481,6 +487,9 @@ $(document).ready(function() {
               datalist.append('<option value="' + d + '">' + d + "</option>");
             });
 
+          $(datalist)
+            .children("option")
+            .wrapAll("<select></select>");
           // document.querySelector(
           //   `.${labelSlug}`
           // ).placeholder = `search ${label.toLowerCase()}`;

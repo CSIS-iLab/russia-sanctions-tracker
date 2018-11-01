@@ -512,6 +512,10 @@ table thead select {
   width: 100%;
 }
 
+table.dataTable.no-footer {
+  border-bottom: none;
+}
+
 table tr > td {
   padding: 8px 10px;
   vertical-align: top;
@@ -587,7 +591,8 @@ table tr:not(.odd):not(.even) ul li::before {
 table a:link,
 table a:hover,
 table a:visited {
-  color: #0065a4;
+  color: #004165;
+  letter-spacing: 1px;
 }
 /*============================
 =          Vendors          =
