@@ -165,7 +165,7 @@ $(document).ready(function() {
               ).prependTo(".dataTables_filter");
 
               var companyInput =
-                '<input id="targeted-companies" type="text" data-list-filter="^" data-wslist="companies" class="filter companies" list="companies">';
+                '<input id="targeted-companies" type="search" data-list-filter="^" data-wslist="companies" class="filter companies" list="companies">';
 
               companyDatalist
                 .wrap("<div></div>")
@@ -179,7 +179,7 @@ $(document).ready(function() {
               ).prependTo(".dataTables_filter");
 
               var individualInput =
-                '<input for="targeted-individuals" type="text" data-list-filter="^" data-wslist="individuals" class="filter individuals" list="individuals">';
+                '<input for="targeted-individuals" type="search" data-list-filter="^" data-wslist="individuals" class="filter individuals" list="individuals">';
 
               individualDatalist
                 .wrap("<div></div>")
@@ -302,17 +302,17 @@ $(document).ready(function() {
               });
 
               searchField.addEventListener("keydown", function() {
-                filterColumns.forEach(function(fc) {
-                  return fc.search("", true, false).draw();
-                });
-
-                []
-                  .concat(
-                    _toConsumableArray(document.querySelectorAll(".filter"))
-                  )
-                  .forEach(function(f) {
-                    return (f.value = "");
-                  });
+                // filterColumns.forEach(function(fc) {
+                //   return fc.search("", true, false).draw();
+                // });
+                //
+                // []
+                //   .concat(
+                //     _toConsumableArray(document.querySelectorAll(".filter"))
+                //   )
+                //   .forEach(function(f) {
+                //     return (f.value = "");
+                //   });
 
                 $("button.view-all")
                   .removeClass("down")
@@ -321,6 +321,8 @@ $(document).ready(function() {
                   .html("Hide all");
 
                 $("table,.dataTables_info").removeClass("hide");
+
+                rerender();
               });
 
               $("tr").hover(function() {
@@ -339,7 +341,6 @@ $(document).ready(function() {
                     tr.removeClass("shown");
                   } else {
                     row.child(format(keys, row.data())).show();
-                    // debugger;
                     $(row.child()[0])
                       .find("td")
                       .attr("colspan", "7")
